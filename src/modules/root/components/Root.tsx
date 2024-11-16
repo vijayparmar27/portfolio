@@ -2,6 +2,7 @@ import { SvgColor } from "@/components/svg-color";
 import { SvgIcon } from "@mui/material";
 import Image from "next/image";
 import React from "react";
+import CardComponet from "./view/Card";
 
 const linkedinSVG = (
   <path
@@ -19,7 +20,7 @@ function Root() {
     <>
       <div className="bg-white pb-2 rounded-md mb-2">
         <div className="pb-16">
-          <div>
+          <div className="relative">
             <Image
               src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
               alt="-"
@@ -31,7 +32,7 @@ function Root() {
               <Image
                 src="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                 alt="-"
-                className="object-cover w-40 h-40 rounded-full "
+                className="object-cover w-40 h-40 rounded-full"
                 width={64}
                 height={64}
               />
@@ -57,14 +58,6 @@ function Root() {
               <p className="inline px-2">+91 8140311309</p>
             </a>
           </div>
-          {/**
-           * social media links
-           */}
-          {/**
-           * end side
-           * email
-           * phone number
-           */}
         </div>
         <div className="pt-4 flex justify-center m-2">
           <a
@@ -82,11 +75,15 @@ function Root() {
             className="flex align-middle px-2"
           >
             <SvgIcon>{githubSVG}</SvgIcon>
-            <p className="inline px-2">Github</p>
+            <p className="inline px-2 align-bottom">Github</p>
           </a>
         </div>
       </div>
-      <div className="bg-white h-20 mb-2 rounded-md">project</div>
+
+      <div className="bg-white py-2 px-2 mb-2 rounded-md shadow-lg">
+        <CardComponet />
+      </div>
+
       <div className="bg-white h-20 rounded-md">what i know</div>
     </>
   );

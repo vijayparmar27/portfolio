@@ -10,22 +10,18 @@ const Nav = () => {
           Logo
         </Link>
 
-        {navConfig.map((nav) => (
-          <div key={nav.subheader}>
-            <h2 key={nav.subheader} className="text-sm font-bold">
-              {nav.subheader}
-            </h2>
-            {nav.items.map((link) => (
-              <>
-                <Link
-                  key={link.title}
-                  href={link.href}
-                  className="hover:bg-blue-700 px-3 py-2 w-full rounded-md text-sm font-medium flex items-center"
-                >
-                  {link?.icon}
-                  <h3 className="px-3">{link.title}</h3>
-                </Link>
-              </>
+        {navConfig.map((nav, navIndex) => (
+          <div key={`nav-${navIndex}`}>
+            <h2 className="text-sm font-bold">{nav.subheader}</h2>
+            {nav.items.map((link, linkIndex) => (
+              <Link
+                key={`link-${navIndex}-${linkIndex}`} // Combine parent and child indexes for unique key
+                href={link.href}
+                className="hover:bg-blue-700 px-3 py-2 w-full rounded-md text-sm font-medium flex items-center"
+              >
+                {link?.icon}
+                <h3 className="px-3">{link.title}</h3>
+              </Link>
             ))}
           </div>
         ))}
