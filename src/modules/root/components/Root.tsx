@@ -3,6 +3,7 @@ import { SvgIcon } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import CardComponet from "./view/Card";
+import Skills from "./view/Skills";
 
 const linkedinSVG = (
   <path
@@ -84,7 +85,9 @@ function Root() {
         <CardComponet />
       </div>
 
-      <div className="bg-white h-20 rounded-md">what i know</div>
+      <div className="bg-white rounded-md">
+        <Skills />
+      </div>
     </>
   );
 }

@@ -29,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <main className="flex w-full">
+        <main className="md:flex md:w-full">
           <Nav />
           <div className="flex-1 overflow-auto">{children}</div>
         </main>
