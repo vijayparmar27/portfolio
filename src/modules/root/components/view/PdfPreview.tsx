@@ -1,29 +1,23 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import * as pdfjsLib from "pdfjs-dist";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
-// import "pdfjs-dist/build/pdf.worker.entry";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
 
 const PdfPreview = ({
-  // file = "https://morth.nic.in/sites/default/files/dd12-13_0.pdf",
   url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-  // file = "/api/hello",
-  // file = "/documents/resume_vijay_parmar.pdf",
 }) => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [data, setData] = useState<string>();
 
   useEffect(() => {
-    let renderTask: pdfjsLib.RenderTask | null = null; // Store the current render task
-
     const loadPDF = async () => {
-      if (!canvasRef.current) return;
-
       try {
         // Set the worker source
-        pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
+        pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
 
-        const res = await axios.get("http://localhost:3000/api", {
+        const res = await axios.get("/api", {
           headers: {
             "Cache-Control": "no-cache",
             Pragma: "no-cache",
@@ -39,61 +33,36 @@ const PdfPreview = ({
 
         const pdfData = atob(paddedBase64); // Decode base64 data to binary
 
-        const loadingTask = pdfjsLib.getDocument({
-          data: pdfData,
-          isChrome: true,
-        });
-
-        const pdf = await loadingTask.promise;
-
-        // Fetch the first page
-        const pageNumber = 1;
-        const page = await pdf.getPage(pageNumber);
-
-        const scale = 1.5;
-        const viewport = page.getViewport({ scale });
-
-        // Get the canvas and its 2D rendering context
-        const canvas = canvasRef.current;
-        const context = canvas.getContext("2d");
-        if (!context) throw new Error("Canvas context is null");
-
-        // Set canvas dimensions
-
-        console.log(`----- viewport : `, viewport);
-
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
-        // Cancel any ongoing render task
-        if (renderTask) {
-          renderTask.cancel();
-        }
-
-        // Render the page into the canvas
-        const renderContext = {
-          canvasContext: context,
-          viewport,
-        };
-        renderTask = page.render(renderContext);
-        await renderTask.promise;
-        console.log("Page rendered");
+        setData(pdfData);
       } catch (error) {
         console.error("Error loading PDF:", error);
       }
     };
 
     loadPDF();
-
-    // Cleanup function to cancel rendering if component unmounts
-    return () => {
-      if (renderTask) {
-        renderTask.cancel();
-      }
-    };
   }, [url]);
 
-  return <canvas ref={canvasRef}></canvas>;
+  const [numPages, setNumPages] = useState<number>();
+
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+    setNumPages(numPages);
+  }
+
+  const file = useMemo(() => ({ data }), [data]); // Memoize the file prop
+
+  return (
+    <div style={{ height: "750px", border: "1px solid #e4e4e4" }}>
+      {data && (
+        <div>
+          <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
+            {Array.from(new Array(numPages), (el, index) => (
+              <Page key={`page_${index + 1}`} pageNumber={index + 1} />
+            ))}
+          </Document>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default PdfPreview;
