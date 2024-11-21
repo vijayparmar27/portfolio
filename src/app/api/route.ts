@@ -44,7 +44,7 @@ import { NextRequest, NextResponse } from "next/server";
 // }
 
 export async function GET(request: NextRequest) {
-  const url = "https://morth.nic.in/sites/default/files/dd12-13_0.pdf";
+  const url = "http://localhost:3000/pdfs/resume_vijay_parmar.pdf";
 
   if (!url) {
     return NextResponse.json(

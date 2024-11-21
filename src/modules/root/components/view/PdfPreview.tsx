@@ -6,9 +6,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
-const PdfPreview = ({
-  url = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-}) => {
+const PdfPreview = () => {
   const [data, setData] = useState<string>();
 
   useEffect(() => {
@@ -26,12 +24,12 @@ const PdfPreview = ({
         });
 
         const sanitizedBase64 = res.data.data.replace(/\s+/g, "");
-        const paddedBase64 = sanitizedBase64.padEnd(
-          Math.ceil(sanitizedBase64.length / 4) * 4,
-          "="
-        );
+        // const paddedBase64 = sanitizedBase64.padEnd(
+        //   Math.ceil(sanitizedBase64.length / 4) * 4,
+        //   "="
+        // );
 
-        const pdfData = atob(paddedBase64); // Decode base64 data to binary
+        const pdfData = atob(sanitizedBase64); // Decode base64 data to binary
 
         setData(pdfData);
       } catch (error) {
@@ -40,7 +38,7 @@ const PdfPreview = ({
     };
 
     loadPDF();
-  }, [url]);
+  }, []);
 
   const [numPages, setNumPages] = useState<number>();
 
@@ -51,9 +49,9 @@ const PdfPreview = ({
   const file = useMemo(() => ({ data }), [data]); // Memoize the file prop
 
   return (
-    <div style={{ height: "750px", border: "1px solid #e4e4e4" }}>
+    <div className="flex justify-center">
       {data && (
-        <div>
+        <div className="w-fit">
           <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
             {Array.from(new Array(numPages), (el, index) => (
               <Page key={`page_${index + 1}`} pageNumber={index + 1} />

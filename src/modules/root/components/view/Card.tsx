@@ -1,15 +1,46 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
 import ProjectView from "./ProjectView";
+import { Project } from "../../_@types/root.interface";
+
+const Projects: Project[] = [
+  {
+    title: "Tic-Tac-Toe Game: React.Js",
+    shortDescription:
+      "A simple Tic-Tac-Toe game built using React.js. The Tic-Tac-Toe Game project involves creating a simple and interactive two-player game where participants take turns marking spaces on a 3x3 grid",
+    description:
+      "Developed a real-time web application using React.js for the frontend and FastAPI for the backend, with Socket.IO enabling real-time communication. Integrated Material-UI (MUI) for a sleek and responsive user interface. Dockerized the React.js frontend to streamline deployment and created a CI/CD pipeline for automated testing and deployment using AWS services. Leveraged Docker and AWS for scalable and efficient deployment.",
+    image: "/assets/images/game1.jpg",
+    tags: ["React.js", "Node.js", "Python", "Socket.io"],
+    link: "https://github.com/vijayparmar27/Tic-Tac-Toe_React.js",
+    asserts: [
+      {
+        type: "image" as const,
+        src: "/placeholder.svg?height=400&width=800",
+        alt: "Placeholder Image 1",
+      },
+      {
+        type: "video" as const,
+        src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+      },
+      {
+        type: "image" as const,
+        src: "/placeholder.svg?height=400&width=800",
+        alt: "Placeholder Image 2",
+      },
+    ],
+  },
+];
 
 export default function CardComponent() {
   const containerRef = React.useRef<HTMLDivElement>(null);
+
   const [isDown, setIsDown] = React.useState(false);
   const [startX, setStartX] = React.useState(0);
   const [scrollLeft, setScrollLeft] = React.useState(0);
@@ -17,30 +48,30 @@ export default function CardComponent() {
 
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const [windowSize, setWindowSize] = React.useState({ width: 0, height: 0 });
+  const [project, setProject] = React.useState<Project>();
 
-  React.useEffect(() => {
-    // Only runs in the browser
-    const updateWindowSize = () => {
+  const [windowSize, setWindowSize] = useState({
+    width: window?.innerWidth ?? 0,
+    height: window?.innerHeight ?? 0,
+  });
+
+  useEffect(() => {
+    const container = containerRef.current;
+
+    setIsScrollable(container && container.scrollWidth > container.clientWidth);
+
+    const handleResize = () => {
       setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: window?.innerWidth,
+        height: window?.innerHeight,
       });
     };
 
-    updateWindowSize(); // Set initial size
-    window.addEventListener("resize", updateWindowSize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", updateWindowSize);
+      window.removeEventListener("resize", handleResize);
     };
-  }, []);
-
-  React.useEffect(() => {
-    const container = containerRef.current;
-    if (container) {
-      setIsScrollable(container.scrollWidth > container.clientWidth);
-    }
   }, [windowSize]);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>): void => {
@@ -74,12 +105,13 @@ export default function CardComponent() {
     const container = containerRef.current;
     if (container) {
       const x = e.pageX - container.offsetLeft;
-      const walk = (x - startX) * 1.5; // Adjusted scroll speed for smoother scrolling
+      const walk = (x - startX) * 2; // Adjust scroll speed, lower value for smoother scroll
       container.scrollLeft = scrollLeft - walk;
     }
   };
 
-  const onProjectClick = (data: unknown) => {
+  const onProjectClick = (index: number) => {
+    setProject(Projects[index]);
     setIsOpen(true);
   };
 
@@ -88,6 +120,7 @@ export default function CardComponent() {
   return (
     <>
       <section
+        ref={containerRef}
         className={`flex overflow-x-auto scroll-smooth items-center mt-4 mb-4 ${
           isScrollable ? "justify-start" : "justify-center"
         }`}
@@ -100,7 +133,7 @@ export default function CardComponent() {
           scrollbarWidth: "none",
         }}
       >
-        {Array.from({ length: 2 }).map((_, index) => (
+        {Projects.map((project, index) => (
           <Card
             key={`list-${index}`}
             sx={{
@@ -116,28 +149,26 @@ export default function CardComponent() {
               <CardMedia
                 component="img"
                 height="140"
-                image="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+                // image="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
+                image={project.image}
                 alt="green iguana"
                 className="h-52"
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  Lizard
+                  {project.title}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Nulla quibusdam distinctio eius obcaecati quas ut dolore hic
-                  quia error praesentium aliquam nisi corporis nam alias, cumque
-                  accusantium, incidunt eaque doloribus.
+                  {project.shortDescription}
                 </Typography>
               </CardContent>
             </CardActionArea>
           </Card>
         ))}
       </section>
-      <ProjectView isOpen={isOpen} onClose={handleClose} />
+      {project && (
+        <ProjectView isOpen={isOpen} onClose={handleClose} project={project} />
+      )}
     </>
   );
 }
