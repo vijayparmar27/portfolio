@@ -14,25 +14,88 @@ const Projects: Project[] = [
     title: "Tic-Tac-Toe Game: React.Js",
     shortDescription:
       "A simple Tic-Tac-Toe game built using React.js. The Tic-Tac-Toe Game project involves creating a simple and interactive two-player game where participants take turns marking spaces on a 3x3 grid",
-    description:
-      "Developed a real-time web application using React.js for the frontend and FastAPI for the backend, with Socket.IO enabling real-time communication. Integrated Material-UI (MUI) for a sleek and responsive user interface. Dockerized the React.js frontend to streamline deployment and created a CI/CD pipeline for automated testing and deployment using AWS services. Leveraged Docker and AWS for scalable and efficient deployment.",
+    description: [
+      "Developed a real-time web application supporting multiple games.",
+      "I implemented using React.js for the frontend and FastAPI for the backend, with Socket.IO enabling real-time communication for seamless gameplay.",
+      "The application features a sleek and responsive user interface, designed with Material-UI (MUI).",
+      " Dockerized the React.js frontend to streamline deployment and scalability.",
+      " Integrated a CI/CD pipeline for automated testing and deployment, leveraging AWS services",
+    ],
     image: "/assets/images/game1.jpg",
-    tags: ["React.js", "Node.js", "Python", "Socket.io"],
+    tags: [
+      {
+        name: "React.js",
+        color: "#61dafb",
+        backgroundColor: "#20232a",
+        borderColor: "#61dafb",
+        boxShadow: "0 4px 12px rgba(97, 218, 251, 0.6)",
+      },
+      {
+        name: "Node.js",
+        color: "#ffffff",
+        backgroundColor: "#3c873a",
+        borderColor: "#6cc24a",
+        boxShadow: "0 4px 12px rgba(108, 194, 74, 0.6)",
+      },
+      {
+        name: "Python",
+        color: "#ffde57",
+        backgroundColor: "#306998",
+        borderColor: "#ffe873",
+        boxShadow: "0 4px 12px rgba(255, 222, 87, 0.6)",
+      },
+      {
+        name: "Socket.io",
+        color: "#ffffff",
+        backgroundColor: "#1e1e1e",
+        borderColor: "#888888",
+        boxShadow: "0 4px 12px rgba(136, 136, 136, 0.6)",
+      },
+      {
+        name: "MUI",
+        color: "#ffffff",
+        backgroundColor: "#007FFF",
+        borderColor: "#0059b2",
+        boxShadow: "0 4px 12px rgba(0, 127, 255, 0.6)",
+      },
+      {
+        name: "Redux-Toolkit",
+        color: "#ffffff",
+        backgroundColor: "#764ABC",
+        borderColor: "#9c6bed",
+        boxShadow: "0 4px 12px rgba(156, 107, 237, 0.6)",
+      },
+    ],
     link: "https://github.com/vijayparmar27/Tic-Tac-Toe_React.js",
     asserts: [
       {
-        type: "image" as const,
-        src: "/placeholder.svg?height=400&width=800",
-        alt: "Placeholder Image 1",
-      },
-      {
         type: "video" as const,
-        src: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+        src: "/assets/ticTacToe/video.mp4",
       },
       {
         type: "image" as const,
-        src: "/placeholder.svg?height=400&width=800",
-        alt: "Placeholder Image 2",
+        src: "/assets/ticTacToe/1.png",
+        alt: "Game Image",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/ticTacToe/2.png",
+        alt: "Game Image",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/ticTacToe/3.png",
+        alt: "Game Image",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/ticTacToe/4.png",
+        alt: "Game Image",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/ticTacToe/5.png",
+        alt: "Game Image",
       },
     ],
   },
@@ -51,8 +114,8 @@ export default function CardComponent() {
   const [project, setProject] = React.useState<Project>();
 
   const [windowSize, setWindowSize] = useState({
-    width: window?.innerWidth ?? 0,
-    height: window?.innerHeight ?? 0,
+    width: 0,
+    height: 0,
   });
 
   useEffect(() => {
@@ -119,6 +182,9 @@ export default function CardComponent() {
 
   return (
     <>
+      <div className="text-2xl font-bold border-b-2 border-neutral-300">
+        <h2 className=" rounded p-4">Projects</h2>
+      </div>
       <section
         ref={containerRef}
         className={`flex overflow-x-auto scroll-smooth items-center mt-4 mb-4 ${
@@ -149,14 +215,34 @@ export default function CardComponent() {
               <CardMedia
                 component="img"
                 height="140"
-                // image="https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U"
                 image={project.image}
                 alt="green iguana"
                 className="h-52"
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  className="text-black text-xl font-medium mb-4 "
+                  component="div"
+                >
                   {project.title}
+                </Typography>
+                <Typography className="pb-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={`tag-${tag.name}`}
+                      className="m-1 p-1 inline-flex rounded text-xs font-bold"
+                      style={{
+                        color: `${tag.color}`,
+                        background: `${tag.backgroundColor}`,
+                        border: `2px solid ${tag.borderColor}`,
+                        boxShadow: tag.boxShadow,
+                      }}
+                    >
+                      {tag.name}
+                    </span>
+                  ))}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "text.secondary" }}>
                   {project.shortDescription}

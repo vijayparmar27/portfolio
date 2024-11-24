@@ -1,7 +1,7 @@
 import { paths } from "@/routes/paths";
 import { SvgColor } from "@/components/svg-color";
 
-const icon = (name: string) => (
+export const icon = (name: string) => (
   <SvgColor src={`/assets/icons/root/${name}.svg`} />
 );
 

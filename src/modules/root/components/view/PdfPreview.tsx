@@ -49,9 +49,9 @@ const PdfPreview = () => {
   const file = useMemo(() => ({ data }), [data]); // Memoize the file prop
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center p-4">
       {data && (
-        <div className="w-fit">
+        <div className="w-fit scroll-auto overflow-auto border-2 border-black p-1">
           <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
             {Array.from(new Array(numPages), (el, index) => (
               <Page key={`page_${index + 1}`} pageNumber={index + 1} />

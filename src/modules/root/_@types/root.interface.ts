@@ -7,9 +7,15 @@ interface ContentSlide {
 export interface Project {
   title: string;
   shortDescription: string;
-  description: string;
+  description: string[];
   image: string;
-  tags: string[];
+  tags: {
+    name: string;
+    color: string;
+    backgroundColor: string;
+    borderColor: string;
+    boxShadow: string;
+  }[];
   link: string;
   asserts: ContentSlide[];
 }

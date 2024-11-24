@@ -9,7 +9,7 @@ const Nav = () => {
   return (
     <div className="sm:block">
       {/* Mobile Header with Hamburger */}
-      <div className="bg-blue-600 text-white p-4 sm: md:hidden flex ">
+      <div className="bg-[#001233] text-white p-4 sm: md:hidden flex ">
         <Link href="/" className="text-2xl font-bold">
           Logo1
         </Link>
@@ -40,7 +40,7 @@ const Nav = () => {
 
       {/* Sidebar */}
       <nav
-        className={`bg-blue-600 text-white h-screen w-64 fixed top-0 left-0 transform transition-transform ${
+        className={`bg-neutral-950 text-white h-screen w-64 fixed top-0 left-0 transform transition-transform ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 md:relative md:block z-10`}
         // style={{ zIndex: 9999999 }}

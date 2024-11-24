@@ -44,7 +44,7 @@ function Root() {
             </div>
           </div>
         </div>
-        <div className="px-4 flex justify-between flex-col md:flex-row">
+        <div className="px-4 pt-4 flex justify-between flex-col md:flex-row">
           <div className="pb-4">
             <strong className="text-black text-xl">Vijay Parmar</strong>
             <span className="pl-1 text-slate-400">(he/him)</span>
@@ -69,12 +69,16 @@ function Root() {
           <div className=" text-sm sm:text-lg sm:font-bold flex flex-col justify-center">
             <a
               href="mailto:vijayparmar0027@gmail.com"
-              className="flex p-2 pb-2"
+              className="flex p-2 pb-2 hover:text-blue-500 hover:bg-gray-100 transition duration-200 rounded-lg"
             >
               <SvgColor src="/assets/icons/root/ic-mail.svg" />
               <p className="px-2">vijayparmar0027@gmail.com</p>
             </a>
-            <a href="tel:+918140311309" className="flex p-2">
+
+            <a
+              href="tel:+918140311309"
+              className="flex p-2 hover:text-blue-500 hover:bg-gray-100 transition duration-200 rounded-lg"
+            >
               <SvgColor src="/assets/icons/root/phone.svg" />
               <p className="inline px-2">+91 8140311309</p>
             </a>

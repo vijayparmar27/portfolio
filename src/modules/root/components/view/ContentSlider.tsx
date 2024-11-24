@@ -60,11 +60,6 @@ export function ContentSlider({ slides, options }: ContentSliderProps) {
               {slides.map((slide, index) => (
                 <div key={index} className="flex-[0_0_100%] min-w-0">
                   {slide.type === "image" ? (
-                    // <img
-                    //   src={slide.src}
-                    //   alt={slide.alt || `Slide ${index + 1}`}
-                    //   className="w-full h-auto object-cover aspect-video"
-                    // />
                     <Image
                       src={slide.src}
                       alt={slide.alt || `Slide ${index + 1}`}
@@ -90,7 +85,7 @@ export function ContentSlider({ slides, options }: ContentSliderProps) {
             variant="outline"
             size="icon"
             className={cn(
-              "absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-sm",
+              "absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-sm shadow-md ",
               prevBtnDisabled && "hidden"
             )}
             onClick={scrollPrev}
@@ -103,7 +98,7 @@ export function ContentSlider({ slides, options }: ContentSliderProps) {
             variant="outline"
             size="icon"
             className={cn(
-              "absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-sm",
+              "absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-background/80 backdrop-blur-sm shadow-md font-bold",
               nextBtnDisabled && "hidden"
             )}
             onClick={scrollNext}

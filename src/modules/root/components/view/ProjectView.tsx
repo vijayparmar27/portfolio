@@ -12,7 +12,7 @@ import { githubSVG } from "../Root";
 
 /**
  * TODO:
- * - Add Tags
+ * - on click view pic and video full size
  * - add Description string in model
  * - style Heading
  * - add github link button
@@ -52,25 +52,49 @@ const ProjectView = ({
           id="alert-dialog-title"
           className="flex justify-between items-center"
         >
-          <strong>{project.title}</strong>
-          <a
-            // href="https://github.com/vijayparmar27/Tic-Tac-Toe_React.js"
-            href={project.link}
-            target="_blank"
-            className="flex items-center px-3 py-2 text-gray-800 bg-slate-300 hover:text-gray-700 hover:bg-gray-100 transition duration-200 rounded-lg"
-          >
-            <SvgIcon className="w-6 h-6 text-gray-800">{githubSVG}</SvgIcon>
-            <p className="inline font-medium pl-2">Github</p>
-          </a>
-          {/* <Button>Github</Button> */}
+          <div className="p-4 rounded-lg shadow-md">
+            <strong className="text-lg font-semibold">{project.title}</strong>
+          </div>
+          <div className="pl-4">
+            <a
+              href={project.link}
+              target="_blank"
+              className="flex items-center px-3 py-2 text-gray-800 bg-slate-300 hover:text-gray-100 hover:bg-gray-700 transition duration-200 rounded-lg"
+            >
+              <SvgIcon className="w-6 h-6 text-gray-800">{githubSVG}</SvgIcon>
+              <p className="inline font-medium pl-2">Github</p>
+            </a>
+          </div>
         </DialogTitle>
         <DialogContent>
           <section className="container mx-auto py-12">
             <ContentSlider slides={project.asserts} />
           </section>
-          <DialogContentText id="alert-dialog-description">
-            {project.description}
+          <DialogContentText className="flex flex-wrap justify-center pb-2">
+            {project.tags.map((tag) => (
+              <span
+                key={`tag-${tag.name}`}
+                className="m-1 p-1 inline-flex rounded text-xs font-bold"
+                style={{
+                  color: `${tag.color}`,
+                  background: `${tag.backgroundColor}`,
+                  border: `2px solid ${tag.borderColor}`,
+                  boxShadow: tag.boxShadow,
+                }}
+              >
+                {tag.name}
+              </span>
+            ))}
           </DialogContentText>
+          {project.description.map((string, index) => (
+            <DialogContentText
+              key={`description-${index}`}
+              id="alert-dialog-description"
+              className="text-gray-700 text-sm leading-relaxed mb-2 p-3 rounded  transition-transform transform hover:bg-gray-100"
+            >
+              {string}
+            </DialogContentText>
+          ))}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} autoFocus>
