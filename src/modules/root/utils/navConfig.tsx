@@ -22,6 +22,7 @@ export const navConfig: {
     items: [
       { title: "Home", href: paths.roots.root, icon: ICONS.home },
       { title: "Resume", href: paths.roots.resume, icon: ICONS.home },
+      { title: "About Me", href: paths.roots.about, icon: ICONS.home },
       { title: "Contact", href: paths.roots.contact, icon: ICONS.home },
     ],
   },

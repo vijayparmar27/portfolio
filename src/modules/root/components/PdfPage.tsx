@@ -22,18 +22,20 @@ const PdfPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-white h-full overflow-auto scroll-auto">
-      <div className="text-2xl font-bold border-b-2 border-neutral-300 flex items-center justify-between px-4">
-        <h2 className=" rounded p-4">Resume</h2>
-        <div className="pr-4">
-          <span onClick={handleDownload}>
-            <Tooltip title="Download">
-              <SvgColor
-                src={`/assets/icons/root/download.svg`}
-                sx={{ width: 34, height: 34 }}
-              />
-            </Tooltip>
-          </span>
+    <div className="bg-white h-full overflow-auto scroll-auto rounded shadow-lg">
+      <div className="sticky top-0 bg-white z-10">
+        <div className="text-2xl font-bold border-b-2 border-neutral-300 flex items-center justify-between px-4">
+          <h2 className=" rounded p-4">Resume</h2>
+          <div className="pr-4">
+            <span onClick={handleDownload}>
+              <Tooltip title="Download">
+                <SvgColor
+                  src={`/assets/icons/root/download.svg`}
+                  sx={{ width: 34, height: 34 }}
+                />
+              </Tooltip>
+            </span>
+          </div>
         </div>
       </div>
       <div>

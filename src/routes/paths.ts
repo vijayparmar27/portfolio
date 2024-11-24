@@ -7,6 +7,7 @@ export const paths = {
   roots: {
     root: ROOTS.ROOT,
     resume: `/resume`,
+    about: `/about`,
     contact: `/contact`,
   },
   dashboard: {
