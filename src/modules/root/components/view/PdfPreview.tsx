@@ -24,12 +24,12 @@ const PdfPreview = () => {
         });
 
         const sanitizedBase64 = res.data.data.replace(/\s+/g, "");
-        // const paddedBase64 = sanitizedBase64.padEnd(
-        //   Math.ceil(sanitizedBase64.length / 4) * 4,
-        //   "="
-        // );
+        const paddedBase64 = sanitizedBase64.padEnd(
+          Math.ceil(sanitizedBase64.length / 4) * 4,
+          "="
+        );
 
-        const pdfData = atob(sanitizedBase64); // Decode base64 data to binary
+        const pdfData = atob(paddedBase64); // Decode base64 data to binary
 
         setData(pdfData);
       } catch (error) {

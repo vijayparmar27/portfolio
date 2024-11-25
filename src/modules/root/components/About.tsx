@@ -7,15 +7,14 @@ import { Badge } from "@/components/ui/Badge";
 
 const About = () => {
   return (
-    <div className="bg-white rounded">
-      <div className="max-w-3xl mx-auto p-6 shadow-xl">
+    <div className="bg-white rounded shadow-xl">
+      <div className="max-w-3xl mx-auto p-6 shadow-xl rounded">
         <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
           <Briefcase className="w-6 h-6 text-blue-500" />
           Experience
         </h2>
 
         <div className="space-y-6">
-          {/* Mean Stack Developer */}
           <Card>
             <CardContent className="pt-6">
               <div className="flex gap-4">
