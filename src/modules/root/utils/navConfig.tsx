@@ -7,6 +7,9 @@ export const icon = (name: string) => (
 
 const ICONS: Record<string, JSX.Element> = {
   home: icon("home"),
+  resume: icon("ic_file"),
+  about: icon("about"),
+  contact: icon("ic-user"),
 };
 
 export const navConfig: {
@@ -21,9 +24,9 @@ export const navConfig: {
     subheader: "",
     items: [
       { title: "Home", href: paths.roots.root, icon: ICONS.home },
-      { title: "Resume", href: paths.roots.resume, icon: ICONS.home },
-      { title: "About Me", href: paths.roots.about, icon: ICONS.home },
-      { title: "Contact", href: paths.roots.contact, icon: ICONS.home },
+      { title: "Resume", href: paths.roots.resume, icon: ICONS.resume },
+      { title: "About Me", href: paths.roots.about, icon: ICONS.about },
+      { title: "Contact", href: paths.roots.contact, icon: ICONS.contact },
     ],
   },
 ];
