@@ -168,7 +168,7 @@ const data: {
 const Skills = () => {
   return (
     <>
-      <div className="text-2xl font-bold border-b-2 border-neutral-300">
+      <div className="text-2xl font-bold">
         <h2 className=" rounded p-4">What I Know</h2>
       </div>
       <div className="flex flex-wrap justify-center text-white">
@@ -178,7 +178,7 @@ const Skills = () => {
             className="flex shrink items-center justify-evenly p-4 m-4"
           >
             <div
-              className="shrink grow flex flex-col content-start items-center rounded justify-center p-8 shadow-2xl"
+              className="shrink grow flex flex-col content-start items-center justify-center p-8 shadow-smooth shadow-smooth-hover rounded-lg"
               style={{
                 color: skillGroup.color,
                 border: `5px solid ${skillGroup.radiusColor}`,

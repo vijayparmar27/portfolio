@@ -6,14 +6,14 @@ import CompanyProjects from "./view/CompanyProjects";
 
 const About = () => {
   return (
-    <div>
-      <div className="bg-white rounded shadow-2xl p-6 mb-3">
+    <div className="bg-white  rounded my-4 grid grid-cols-1 xl:grid-cols-2 min-[2142px]:grid-cols-3 gap-6">
+      <div className="p-3 lg:m-6 xl:justify-self-start">
         <Experience />
       </div>
-      <div className="bg-white rounded shadow-2xl p-6  mb-3">
+      <div className="p-3 lg:m-6 xl:justify-self-start">
         <Education />
       </div>
-      <div className="bg-white rounded shadow-2xl p-6  mb-3">
+      <div className="p-3 lg:m-6 xl:justify-self-start">
         <CompanyProjects />
       </div>
     </div>

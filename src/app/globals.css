@@ -3,12 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: rgb(150, 149, 149);
+  --background: #fff;
   --foreground: #171717;
+  --text-color: #000;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color);
+}
+
+@layer components {
+  .shadow-smooth {
+    @apply transition-shadow duration-300 ease-in-out;
+    box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px,
+      rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
+  }
+
+  .shadow-smooth-hover:hover {
+    box-shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px 0px,
+      rgba(145, 158, 171, 0.16) 0px 16px 32px -6px;
+  }
 }

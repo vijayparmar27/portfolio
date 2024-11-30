@@ -7,7 +7,7 @@ import { experience } from "@/mock/experience";
 
 const Experience = () => {
   return (
-    <div className="max-w-3xl mx-auto p-6 shadow-xl rounded">
+    <section className="max-w-3xl mx-auto p-6 shadow-smooth shadow-smooth-hover rounded-lg m-2">
       <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
         <Briefcase className="w-6 h-6 text-blue-500" />
         Experience
@@ -74,7 +74,7 @@ const Experience = () => {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

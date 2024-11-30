@@ -18,8 +18,8 @@ export const githubSVG = (
 
 function Root() {
   return (
-    <>
-      <div className="bg-white pb-2 rounded-md mb-2">
+    <div className="py-3">
+      <div className="pb-2 rounded-lg shadow-smooth shadow-smooth-hover">
         <div className="pb-16">
           <div className="relative">
             <Image
@@ -106,14 +106,14 @@ function Root() {
         </div>
       </div>
 
-      <div className="bg-white py-2 px-2 mb-2 rounded-md shadow-lg">
+      <div className="py-2 px-2 my-5 rounded-lg shadow-smooth shadow-smooth-hover">
         <CardComponet />
       </div>
 
-      <div className="bg-white rounded-md">
+      <div className="my-2  rounded-lg shadow-smooth shadow-smooth-hover">
         <Skills />
       </div>
-    </>
+    </div>
   );
 }
 

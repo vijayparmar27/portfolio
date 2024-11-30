@@ -50,9 +50,9 @@ const ProjectView = ({
       >
         <DialogTitle
           id="alert-dialog-title"
-          className="flex justify-between items-center"
+          className="flex justify-between items-center shadow-smooth shadow-smooth-hover"
         >
-          <div className="p-4 rounded-lg shadow-md">
+          <div className="">
             <strong className="text-lg font-semibold">{project.title}</strong>
           </div>
           <div className="pl-4">

@@ -182,7 +182,7 @@ export default function CardComponent() {
 
   return (
     <>
-      <div className="text-2xl font-bold border-b-2 border-neutral-300">
+      <div className="text-2xl font-bold">
         <h2 className=" rounded p-4">Projects</h2>
       </div>
       <section
@@ -206,9 +206,8 @@ export default function CardComponent() {
               minWidth: "20rem",
               maxWidth: "20rem",
               mx: 2,
-              border: "2px solid #dbdbdb",
-              borderRadius: "10px",
             }}
+            className="shadow-smooth shadow-smooth-hover border-2 border-neutral-300 rounded-lg"
             onClick={() => onProjectClick(index)}
           >
             <CardActionArea>

@@ -1,13 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/Card";
-import { Layers, Podcast } from "lucide-react";
+import { Layers, Minus } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { companyProjects } from "@/mock/companyProjects";
 
 const CompanyProjects = () => {
   return (
-    <div className="max-w-3xl mx-auto p-6 shadow-xl rounded">
+    <div className="max-w-3xl mx-auto p-6 m-2 shadow-smooth shadow-smooth-hover rounded-lg">
       <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
         <Layers className="w-6 h-6 text-blue-500" />
         Company Projects
@@ -48,8 +48,10 @@ const CompanyProjects = () => {
                       {project.role}
                     </p>
                     <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm mt-1">
-                      <Podcast className="w-5 h-5" />
-                      <span>{project.description}</span>
+                      <span>
+                        <Minus className="inline-block pr-2" />
+                        {project.description}
+                      </span>
                     </div>
                     {project.technologies && (
                       <div className="flex flex-wrap gap-2 mt-3">

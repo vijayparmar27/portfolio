@@ -6,10 +6,10 @@ import { educations } from "@/mock/educations";
 
 const Education = () => {
   return (
-    <div className="max-w-3xl mx-auto p-6 shadow-xl rounded">
+    <div className="max-w-3xl mx-auto p-6 m-2 shadow-smooth shadow-smooth-hover rounded-lg">
       <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
         <BookOpen className="w-6 h-6 text-blue-500" />
-        Experience
+        Education
       </h2>
 
       <div className="space-y-6">

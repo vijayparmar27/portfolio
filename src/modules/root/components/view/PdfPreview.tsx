@@ -49,7 +49,7 @@ const PdfPreview = () => {
   const file = useMemo(() => ({ data }), [data]); // Memoize the file prop
 
   return (
-    <div className="flex justify-center p-4">
+    <div className="flex justify-center p-4 shadow-smooth shadow-smooth-hover">
       {data && (
         <div className="w-fit scroll-auto overflow-auto border-2 border-black p-1">
           <Document file={file} onLoadSuccess={onDocumentLoadSuccess}>
