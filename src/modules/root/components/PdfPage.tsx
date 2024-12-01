@@ -12,7 +12,7 @@ const PdfPage: React.FC = () => {
     e.preventDefault();
     try {
       const link = document.createElement("a");
-      link.href = "/pdfs/resume_vijay_parmar.pdf";
+      link.href = "./pdfs/resume_vijay_parmar.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
