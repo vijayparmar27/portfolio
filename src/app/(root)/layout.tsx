@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../globals.css";
 import Nav from "@/modules/root/layouts/Nav";
+import { Public_Sans } from "next/font/google";
+
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  variable: "--font-public-sans",
+});
 
 const geistSans = localFont({
   src: "../fonts/GeistVF.woff",
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased ${publicSans.variable}`}
       >
         <main className="md:flex md:w-full">
           <Nav />

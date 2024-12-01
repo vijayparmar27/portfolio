@@ -22,8 +22,8 @@ const PdfPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-white h-full overflow-auto scroll-auto rounded-lg shadow-smooth shadow-smooth-hover">
-      <div className="sticky top-0 bg-white z-10 shadow-smooth shadow-smooth-hover">
+    <div className="bg-white h-full overflow-auto scroll-auto rounded-lg shadow-smooth">
+      <div className="sticky top-0 bg-white z-10 shadow-smooth">
         <div className="text-2xl font-bold  flex items-center justify-between px-4">
           <h2 className=" rounded p-4">Resume</h2>
           <div className="pr-4">
