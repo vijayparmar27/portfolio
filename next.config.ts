@@ -16,11 +16,7 @@ const nextConfig: NextConfig = {
 
     return config;
   },
-  output: "export",
-  exportPathMap: async function (defaultPathMap) {
-    delete defaultPathMap["/api"]; // Remove /api from the static export
-    return defaultPathMap;
-  },
+  output: "standalone",
 };
 
 export default nextConfig;
