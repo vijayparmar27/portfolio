@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
 
     return config;
   },
-  output: "export",
+  output: "standalone",
 };
 
 export default nextConfig;
