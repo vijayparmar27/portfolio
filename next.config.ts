@@ -11,14 +11,6 @@ const nextConfig: NextConfig = {
       "cors-anywhere.herokuapp.com",
     ],
   },
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: "http://localhost:3000/api/:path*",
-      },
-    ];
-  },
   webpack: (config) => {
     config.resolve.alias.canvas = false;
 

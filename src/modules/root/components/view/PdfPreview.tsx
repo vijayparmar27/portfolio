@@ -15,7 +15,7 @@ const PdfPreview = () => {
         // Set the worker source
         pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
 
-        const res = await axios.get("/api", {
+        const res = await axios.get("./api", {
           headers: {
             "Cache-Control": "no-cache",
             Pragma: "no-cache",
