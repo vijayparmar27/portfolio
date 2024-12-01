@@ -2,7 +2,7 @@ export const experience = [
   {
     position: "Mean Stack Developer",
     company: "Elluminati",
-    companyImage: "/assets/images/elluminati_logo.jpg",
+    companyImage: "./assets/images/elluminati_logo.jpg",
     companyLinkedinLink: "https://www.linkedin.com/company/elluminati/",
     duration: "Full-time",
     dates: "Apr 2024 - Present",
@@ -13,7 +13,7 @@ export const experience = [
   {
     position: "Node js",
     company: "Artoon Solutions Private Limited",
-    companyImage: "/assets/images/artoonsolutions_logo.jpg",
+    companyImage: "./assets/images/artoonsolutions_logo.jpg",
     companyLinkedinLink: "https://www.linkedin.com/company/artoonsolutions/",
     duration: "Full-time",
     dates: "Sep 2022 - Mar 2024",

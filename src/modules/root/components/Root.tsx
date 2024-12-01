@@ -23,7 +23,7 @@ function Root() {
         <div className="pb-16">
           <div className="relative">
             <Image
-              src="/assets/images/image.jpg"
+              src="./assets/images/image.jpg"
               alt="-"
               className="object-cover w-full h-48 rounded-t-md"
               width={64}
@@ -33,7 +33,7 @@ function Root() {
             <div className="pl-2 pb-2">
               <div className="absolute top-24 border-4 rounded-full">
                 <Image
-                  src="/assets/images/developer.jpg"
+                  src="./assets/images/developer.jpg"
                   alt="-"
                   className="object-cover w-40 h-40 rounded-full"
                   width={64}
@@ -71,7 +71,7 @@ function Root() {
               href="mailto:vijayparmar0027@gmail.com"
               className="flex p-2 pb-2 hover:text-blue-500 hover:bg-gray-100 transition duration-200 rounded-lg"
             >
-              <SvgColor src="/assets/icons/root/ic-mail.svg" />
+              <SvgColor src="./assets/icons/root/ic-mail.svg" />
               <p className="px-2">vijayparmar0027@gmail.com</p>
             </a>
 
@@ -79,7 +79,7 @@ function Root() {
               href="tel:+918140311309"
               className="flex p-2 hover:text-blue-500 hover:bg-gray-100 transition duration-200 rounded-lg"
             >
-              <SvgColor src="/assets/icons/root/phone.svg" />
+              <SvgColor src="./assets/icons/root/phone.svg" />
               <p className="inline px-2">+91 8140311309</p>
             </a>
           </div>

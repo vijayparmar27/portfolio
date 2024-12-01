@@ -3,7 +3,7 @@ import { SvgColor } from "@/components/svg-color";
 import { Github, Instagram, Linkedin } from "lucide-react";
 
 export const icon = (name: string) => (
-  <SvgColor src={`/assets/icons/root/${name}.svg`} />
+  <SvgColor src={`./assets/icons/root/${name}.svg`} />
 );
 
 export const ICONS: Record<string, JSX.Element> = {
@@ -36,7 +36,8 @@ export const navConfig: {
     ],
   },
   {
-    subheader: "Socials",
+    // subheader: "Socials",
+    subheader: "Find With Me",
     items: [
       {
         title: "Linkedin",

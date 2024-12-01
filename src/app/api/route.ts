@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const url = "http://localhost:3000/pdfs/resume_vijay_parmar.pdf";
 
   if (!url) {

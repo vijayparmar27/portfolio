@@ -38,7 +38,7 @@ const Nav = () => {
       <nav
         className={`bg-background shadow-smooth shadow-smooth-hover h-screen w-64 fixed top-0 left-0 transform transition-transform ${
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 md:relative md:block z-20 `}
+        } md:translate-x-0 md:relative md:block z-20`}
       >
         <div className="flex flex-col items-start p-4 space-y-4">
           <Link href="/" className="text-2xl font-bold">
@@ -50,7 +50,9 @@ const Nav = () => {
               key={`nav-${navIndex}`}
               className="w-full text-[--secondary-text-color]"
             >
-              <h2 className="text-sm font-bold">{nav.subheader}</h2>
+              {nav.subheader && (
+                <h2 className="text-sm font-bold p-2">{nav.subheader}</h2>
+              )}
               {nav.items.map((link, linkIndex) => {
                 const currentIndex = `${navIndex}-${linkIndex}`;
                 return (
