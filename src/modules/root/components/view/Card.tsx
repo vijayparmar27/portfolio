@@ -21,7 +21,7 @@ const Projects: Project[] = [
       " Dockerized the React.js frontend to streamline deployment and scalability.",
       " Integrated a CI/CD pipeline for automated testing and deployment, leveraging AWS services",
     ],
-    image: "/assets/images/game1.jpg",
+    image: "./assets/images/game1.jpg",
     tags: [
       {
         name: "React.js",
@@ -70,31 +70,31 @@ const Projects: Project[] = [
     asserts: [
       {
         type: "video" as const,
-        src: "/assets/ticTacToe/video.mp4",
+        src: "./assets/ticTacToe/video.mp4",
       },
       {
         type: "image" as const,
-        src: "/assets/ticTacToe/1.png",
+        src: "./assets/ticTacToe/1.png",
         alt: "Game Image",
       },
       {
         type: "image" as const,
-        src: "/assets/ticTacToe/2.png",
+        src: "./assets/ticTacToe/2.png",
         alt: "Game Image",
       },
       {
         type: "image" as const,
-        src: "/assets/ticTacToe/3.png",
+        src: "./assets/ticTacToe/3.png",
         alt: "Game Image",
       },
       {
         type: "image" as const,
-        src: "/assets/ticTacToe/4.png",
+        src: "./assets/ticTacToe/4.png",
         alt: "Game Image",
       },
       {
         type: "image" as const,
-        src: "/assets/ticTacToe/5.png",
+        src: "./assets/ticTacToe/5.png",
         alt: "Game Image",
       },
     ],
